@@ -10,4 +10,7 @@ export class CreateUserDto {
   @IsString()
   @IsEmail()
   email: string;
+
+  @IsString()
+  role: string;
 }

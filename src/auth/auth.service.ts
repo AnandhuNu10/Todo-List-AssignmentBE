@@ -49,7 +49,6 @@ export class AuthService {
   async createEmployee(employeeDto: EmployeeDto) {
     const { employee_name, employee_designation, employee_experience } =
       employeeDto;
-    //validations
     const isAlreadyExist = await this.employeeRepository.findOne({
       where: { employee_name: employee_name },
     });

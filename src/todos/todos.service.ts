@@ -57,18 +57,14 @@ export class TodosService {
   }
 
   async update(id: number) {
-    // Find the Todo by ID
     const todo = await this.todoRepository.findOne({where:{id:id}});
 
     if (!todo) {
-      // Handle the case where the Todo with the specified ID is not found
       throw new Error(`Todo with ID ${id} not found`);
     }
 
-    // Toggle the 'completed' field
     todo.completed = !todo.completed;
 
-    // Save the updated Todo to the database
     await this.todoRepository.save(todo);
 
     return todo;

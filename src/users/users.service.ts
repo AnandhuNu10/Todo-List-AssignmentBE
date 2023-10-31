@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -17,11 +17,17 @@ export class UsersService {
   }
 
   async create(createUserDto: CreateUserDto) {
+
+    //validations
+    const isEmailExist = await this.userRepository.findOne({where:{email:createUserDto.email}});
+    if(isEmailExist){
+      throw new UnauthorizedException('email already Exist')
+    }
     let user: User = new User();
     user.email = createUserDto.email; 
     user.username = createUserDto.username;
     user.password = createUserDto.password;
-    user.role = 'user';
+    user.role = createUserDto.role;
 
     return await this.userRepository.save(user);
   }
