@@ -18,12 +18,12 @@ export class AuthController {
   login(@Body() createLoginDto: CreateLoginDto) {
     return this.authService.login(createLoginDto);
   }
-  @Post('/create-employee')
-  createEmployee(@Body() employeeDto: EmployeeDto) {
-    return this.authService.createEmployee(employeeDto);
-  }
-  @Get('/fetch-employees')
-  fetchEmployees() {
-    return this.authService.fetchEmployees();
-  }
+  // @Post('/create-employee')
+  // createEmployee(@Body() employeeDto: EmployeeDto) {
+  //   return this.authService.createEmployee(employeeDto);
+  // }
+  // @Get('/fetch-employees')
+  // fetchEmployees() {
+  //   return this.authService.fetchEmployees();
+  // }
 }

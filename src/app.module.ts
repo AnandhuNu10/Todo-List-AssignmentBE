@@ -10,7 +10,7 @@ import { TodosModule } from './todos/todos.module';
 
 
 @Module({
-  imports: [ProductModule,TypeOrmModule.forRoot(typeOrmConfig), AuthModule, UsersModule, TodosModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), AuthModule, UsersModule, TodosModule],
   controllers: [AppController],
   providers: [AppService],
 })

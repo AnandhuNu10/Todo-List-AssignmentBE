@@ -32,7 +32,7 @@ export class TodosController {
   findAllTodo(@Param('userId') userId: number) {
     return this.todosService.findAllTodo(userId);
   }
-  
+
 
   @Get('find-completed-todo/:userId')
   findAllCompletedTodo(@Param('userId') userId: number) {
@@ -43,9 +43,8 @@ export class TodosController {
   update(@Param('id') id: string) {
     return this.todosService.update(+id);
   }
-
-  @Delete('delete-todo/:id')
-  remove(@Param('id') id: string) {
-    return this.todosService.remove(+id);
-  }
+  // @Delete('delete-todo/:id')
+  // remove(@Param('id') id: string) {
+  //   return this.todosService.remove(+id);
+  // }
 }
