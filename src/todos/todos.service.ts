@@ -46,14 +46,16 @@ export class TodosService {
     });
   }
   async findAllTodo(userId: number) {
-    const currentDate = new Date().toISOString().split('T')[0];
-    return await this.todoRepository.find({
+    const currentDate = new Date().toLocaleString();
+    const aa =  await this.todoRepository.find({
       where: {
         user: { id: userId },
         date:currentDate,
       },  
       relations: ['user'],
     });
+    return aa;
+    console.log(aa)
   }
 
   async update(id: number) {
