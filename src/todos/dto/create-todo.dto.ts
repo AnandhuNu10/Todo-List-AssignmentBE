@@ -7,7 +7,7 @@ export class CreateTodoDto {
 
   @ApiProperty({
     description: 'give an array',
-    example: ['Go somewhere'],
+    example: 'Go somewhere',
   })
   @IsArray()
   @IsString({ each: true })
