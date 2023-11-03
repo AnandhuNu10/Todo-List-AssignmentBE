@@ -4,7 +4,6 @@ import { Repository } from 'typeorm';
 import { User } from './entities/login.entity';
 import { Employees } from './entities/employees.entity';
 import { CreateLoginDto } from './dto/login.dto';
-import { EmployeeDto } from './dto/employee.dto';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -46,37 +45,37 @@ export class AuthService {
       },
     };
   }
-  async createEmployee(employeeDto: EmployeeDto) {
-    const { employee_name, employee_designation, employee_experience } =
-      employeeDto;
-    const isAlreadyExist = await this.employeeRepository.findOne({
-      where: { employee_name: employee_name },
-    });
-    if (isAlreadyExist) {
-      return {
-        message: 'employee already exist',
-      };
-    }
-    const saveEmployee = {
-      employee_name: employee_name,
-      employee_designation: employee_designation,
-      employee_experience: employee_experience,
-    };
-    await this.employeeRepository.save(saveEmployee);
-    return {
-      statusCode: HttpStatus.CREATED,
-      message: 'employee created successfully',
-      data: {
-        employee_name: employee_name,
-      },
-    };
-  }
-  async fetchEmployees() {
-    const employees = await this.employeeRepository.find();
-    return {
-      employees: employees,
-    };
-  }
+  // async createEmployee(employeeDto: EmployeeDto) {
+  //   const { employee_name, employee_designation, employee_experience } =
+  //     employeeDto;
+  //   const isAlreadyExist = await this.employeeRepository.findOne({
+  //     where: { employee_name: employee_name },
+  //   });
+  //   if (isAlreadyExist) {
+  //     return {
+  //       message: 'employee already exist',
+  //     };
+  //   }
+  //   const saveEmployee = {
+  //     employee_name: employee_name,
+  //     employee_designation: employee_designation,
+  //     employee_experience: employee_experience,
+  //   };
+  //   await this.employeeRepository.save(saveEmployee);
+  //   return {
+  //     statusCode: HttpStatus.CREATED,
+  //     message: 'employee created successfully',
+  //     data: {
+  //       employee_name: employee_name,
+  //     },
+  //   };
+  // }
+  // async fetchEmployees() {
+  //   const employees = await this.employeeRepository.find();
+  //   return {
+  //     employees: employees,
+  //   };
+  // }
 }
 
 
