@@ -15,6 +15,7 @@ SwaggerModule.setup('api', app, document);
   app.enableCors({
     origin: [ 
       'http://localhost:3000',
+      'http://anadhu-frontend.s3-website-us-east-1.amazonaws.com/'
     ],
     methods: ["GET", "POST","PUT","DELETE","PATCH"],
     credentials: true,
