@@ -16,13 +16,13 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
   async login(createLoginDto: CreateLoginDto) {
-    console.log('1');
+    // console.log('1');
     const { username, password } = createLoginDto;
     const user = await this.userRepository.findOne({
       where: { username: username },
     });
     if (!user) {
-      console.log("1")
+      // console.log("1")
       throw new UnauthorizedException('Username not found');
     }
     if (user.password !== password) {
